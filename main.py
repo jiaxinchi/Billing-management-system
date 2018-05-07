@@ -1,4 +1,7 @@
-﻿from tkinter import *
+﻿#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+from tkinter import *
+import tkinter.messagebox as messagebox
 class Application(Frame):
 	def __init__(self,master=None):
 		Frame.__init__(self,master)
@@ -6,10 +9,13 @@ class Application(Frame):
 		self.creatWidgets()
 	
 	def creatWidgets(self):
-		self.hellolabel = Label(self,text="hello world!")
-		self.hellolabel.pack()
-		self.quitbutton = Button(self, text='Quit',command=self.quit)
-		self.quitbutton.pack()
+		self.nameInput = Entry(self)
+		self.nameInput.pack()
+		self.alertButton = Button(self,text='hello', command=self.hello)
+		self.alertButton.pack()
+	def hello(self):
+		name = self.nameInput.get() or 'world'
+		messagebox.showinfo('Message','hello,%s' %name)
 		
 app = Application()
 # 设置窗口标题
